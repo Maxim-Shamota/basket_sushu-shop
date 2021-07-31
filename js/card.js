@@ -2,6 +2,8 @@ const cartWrapper = document.querySelector('.cart-wrapper');
 
 window.addEventListener('click', (e) => {
 	if (e.target.hasAttribute('data-cart')) {
+		
+
 		const card = e.target.closest('.card');
 
 		const productInfo = {
@@ -57,7 +59,13 @@ window.addEventListener('click', (e) => {
 			cartWrapper.insertAdjacentHTML('beforeend', cardItemHtml);
 		}
 
-		//сбрасываем счетчик добавленного товара на 1
+		//сбрасываю счетчик добавленного товара на 1
 		card.querySelector('[data-counter]').innerText = 1;
+
+		//отображение статуса корзины
+		toggleCardStatus();
+
+		//пересчет общей стоимости корзины
+		calcCartPriceAndDelivery();
 	}
 });
